@@ -1,0 +1,51 @@
+﻿@page
+@using System.Security.Claims;
+
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@{
+    bool isLogged = User.Identity?.IsAuthenticated ?? false;
+}
+
+@if(isLogged)
+{
+    <h1>Witaj @User.FindFirst(ClaimTypes.NameIdentifier)?.Value</h1>
+    <h2>Przelewik?</h2>
+    <hr />
+    <a asp-page-handler="logout" class="btn btn-secondary">Wyloguj się</a>
+}else
+{
+    <div class="section section-login">
+    <div class="row">
+    <div class="col-6">
+        <h1>Witaj w Twoim Banku!</h1>
+        <h2>Zaloguj się, aby mieć dostęp do hajsów</h2>
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="LoginData.UserName">Nazwa użytkownika:</label>
+                <input type="text" asp-for="LoginData.UserName" class="form-control" />
+                <span asp-validation-for="LoginData.UserName" class="text-danger"/>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LoginData.Password">Hasło:</label>
+                <input type="password" asp-for="LoginData.Password" class="form-control" />
+                <span asp-validation-for="LoginData.Password" class="text-danger"/>
+            </div>
+            <hr />
+            <button type="submit" class="btn-primary btn">Zaloguj</button>
+        </form>
+    </div>
+    <div class="col-6">
+        <img src="img/logo.png" />
+    </div>
+</div>
+</div>
+}
+
+
+
+

@@ -1,0 +1,48 @@
+﻿@page "{handler?}"
+@model _4_SQLInjection.Pages.ItemsModel
+
+<h1>Zadania:</h1>
+<hr />
+<div class="row">
+    <div class="col-6">
+        <form method="get">
+            <div class="form-group">
+                <label asp-for="SearchBy">Szukaj: </label>
+                <input type="text" asp-for="SearchBy" class="form-control"/>
+                <p>Aby hackować, wpisz: <code>'; DELETE from items --</code></p>
+            </div>
+            <div class="row">
+                <button type="submit" class="btn btn-danger" asp-page-handler="SearchInsecure">Szukaj niebezpiecznie</button>
+                <button type="submit" class="btn btn-primary" asp-page-handler="searchSecure">Szukaj bezpiecznie</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    @if(Model.TodoItems.Count == 0)
+    {
+        <p>Brak zadań</p>
+    }else
+    {
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Opis</th>
+                    <th>Czy skończone</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model.TodoItems)
+                {
+                    <tr>
+                        <td>@item.Title</td>
+                        <td>@item.Description</td>
+                        <td>@(item.Done ? "TAK" : "NIE")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>

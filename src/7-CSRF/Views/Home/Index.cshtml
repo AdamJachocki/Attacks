@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1>Podatne usuwanie</h1>
+<p>Kliknij przycisk, aby zasymulować usuwanie danych</p>
+<div class="col-6">
+    <form method="post" asp-action="InsecureDelete">
+        <input type="hidden" name="id" value="5" />
+        <button type="submit" class="btn btn-primary">Usuń</button>
+    </form>
+</div>
+<hr />
+<h1>Bezpieczne usuwanie</h1>
+<p>Kliknij przycisk, aby zasymulować usuwanie danych</p>
+<div class="col-6">
+    <form method="post" asp-action="SecureDelete">
+        <input type="hidden" name="id" value="5" />
+        <button type="submit" class="btn btn-primary">Usuń</button>
+    </form>
+</div>

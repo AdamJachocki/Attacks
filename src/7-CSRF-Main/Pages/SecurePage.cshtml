@@ -1,0 +1,10 @@
+﻿@page
+@model _7_CSRF_Main.Pages.SecurePageModel
+
+<h1>Strona bezpieczna</h1>
+<div class="col-6">
+    <form method="post" asp-handler="delete">
+        <input type="hidden" name="id" value="5" />
+        <button type="submit" class="btn btn-primary">Usuń</button>
+    </form>
+</div>

@@ -1,0 +1,38 @@
+﻿@page
+@model _6_DataModificationControl.Pages.ListPageModel
+
+<h1>Twoje zadania</h1>
+<hr />
+<a class="btn btn-primary" asp-page="NewItem">Nowe zadanie</a>
+<hr />
+@if(Model.Items.Count() == 0)
+{
+    <p>Brak zadań</p>
+}else
+{
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nazwa</th>
+                <th>Zrobione</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in Model.Items)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>
+                        <a asp-page="NewItem" asp-route-id="@item.Id">@item.Title</a>
+                    </td>
+                    <td>@(item.Done ? "Tak" : "Nie")</td>
+                    <td>
+                        <a asp-page="ListPage" asp-page-handler="delete" asp-route-id="@item.Id" class="text-danger">Usuń</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

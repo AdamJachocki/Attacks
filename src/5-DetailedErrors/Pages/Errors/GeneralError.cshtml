@@ -1,0 +1,10 @@
+﻿@page
+@model _5_DetailedErrors.Pages.Errors.GeneralErrorModel
+
+<h1>Kurza stopa, nie mam pojęcia co poszło nie tak!</h1>
+<hr />
+@if(!string.IsNullOrWhiteSpace(Model.ErrorMsg))
+{
+<h2>Błąd:</h2>
+<p>@Model.ErrorMsg</p>
+}

@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@if(User.Identity.IsAuthenticated)
+{
+    <div class="row">
+        <a asp-page="Items">Moje zadania</a>
+    </div>
+
+    <div class="row">
+        <a asp-page="Login" asp-page-handler="Logout">Wyloguj się</a>
+    </div>
+}else
+{
+    <a asp-page="Login">Zaloguj się</a>    
+}

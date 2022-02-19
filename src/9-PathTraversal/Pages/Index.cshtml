@@ -1,0 +1,37 @@
+﻿@page "{handler?}"
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<h1>Podatność na PathTraversal</h1>
+<hr />
+<div class="col-6">
+    <form method="get">
+        <div class="form-group">
+            <label asp-for="FileName">Spreparowana ścieżka do pliku:</label>
+            <input type="text" asp-for="FileName" />
+            <p class="text-muted">Możesz podać np: "../appsettings.json"</p>
+        </div>
+        <hr />
+        <button asp-page-handler="file" type="submit" class="btn btn-primary">Atakuj!</button>
+    </form>
+</div>
+<hr />
+
+<h1>Kod bezpieczny</h1>
+<hr />
+<p>Spróbuj teraz, cwaniaku ;)</p>
+<div class="col-6">
+    <form method="get">
+        <div class="form-group">
+            <label asp-for="FileName">Spreparowana ścieżka do pliku:</label>
+            <input type="text" asp-for="FileName" />
+            <p class="text-muted">Możesz podać np: "../appsettings.json"</p>
+        </div>
+        <hr />
+        <button asp-page-handler="fileSecured" type="submit" class="btn btn-primary">Atakuj!</button>
+    </form>
+</div>
+<hr />
+
