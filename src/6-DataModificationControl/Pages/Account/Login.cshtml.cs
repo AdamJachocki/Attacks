@@ -19,7 +19,6 @@ namespace _6_DataModificationControl.Areas.Identity.Pages.Account
             this.signInMan = signInMan;
         }
 
-        [Authorize]
         public async Task<IActionResult> OnGetLogout()
         {
             await signInMan.SignOutAsync();
